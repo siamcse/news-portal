@@ -1,4 +1,5 @@
 const loadCategory = async() =>{
+    isLoading(true);
     const url = 'https://openapi.programming-hero.com/api/news/categories';
     const res = await fetch(url)
     const data = await res.json()
@@ -14,9 +15,11 @@ const displayCategory = (categories) =>{
             <a onclick="loadDetails(${category.category_id})" class="link link-hover p-2">${category.category_name}</a>
         `;
         categoryContainer.appendChild(li);
+        isLoading(false);
     })
 }
 const loadDetails = (detailsId) =>{
+    isLoading(true);
     fetch(`https://openapi.programming-hero.com/api/news/category/0${detailsId}`)
     .then(res => res.json())
     .then(data => displayDetails(data.data))
@@ -24,6 +27,7 @@ const loadDetails = (detailsId) =>{
 //display details in card
 const displayDetails = (details) =>{
     const detailsContainer = document.getElementById('details-container');
+    isLoading(false);
     detailsContainer.innerHTML = '';
     details.forEach(detail =>{
         // console.log(detail);
@@ -56,6 +60,7 @@ const displayDetails = (details) =>{
             </div>
         `;
         detailsContainer.appendChild(div);
+        
     })
 }
 //load modal
@@ -92,5 +97,14 @@ const displayModal = (newsId) =>{
                 </div>
         </div>
     `;
+}
+const isLoading = (isTrue) =>{
+    const spinner = document.getElementById('spinner');
+    if(isTrue){
+        spinner.classList.remove('hidden');
+    }
+    else{
+        spinner.classList.add('hidden');
+    }
 }
 loadCategory();
