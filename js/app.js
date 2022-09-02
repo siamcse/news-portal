@@ -26,16 +26,33 @@ const displayDetails = (details) =>{
     detailsContainer.innerHTML = '';
     details.forEach(detail =>{
         console.log(detail);
+        const{title, details, image_url, author, total_view} = detail;
+        const {name, img, published_date} = author;
+        console.log(img);
         const div = document.createElement('div');
-        div.className = ('card lg:card-side bg-base-100 shadow-xl mt-10');
+        div.className = ('card md:card-side bg-base-100 shadow-xl mt-10');
         div.innerHTML = `
-            <figure><img class="w-60 h-full" src="${detail.image_url}" alt="Album"></figure>
+            <figure><img class="w-60 h-full" src="${image_url}" alt="Album"></figure>
             <div class="card-body">
-                <h2 class="card-title">${detail.title}</h2>
-                <p>${detail.details.length>500 ? detail.details.slice(0,500)+' ...':detail.details}</p>
-                <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Listen</button>
-                </div>
+                <h2 class="card-title">${title}</h2>
+                <p>${details.length>500 ? details.slice(0,500)+' ...':details}</p>
+                <div class="card-actions justify-between items-center">
+                            <div class="flex items-center gap-2">
+                                <img class="rounded-full w-10 h-10" src="${img}" alt="Image not found">
+                                <div>
+                                    <h6>${name ? name:'Author name not found'}</h6>
+                                    <p>${published_date ? published_date:'Published date not found'}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <img src="img/carbon_view.png" alt="">
+                                <h5 class="text-xl font-bold">${total_view ? total_view:0}</h5>
+                            </div>
+                            <div>
+                                <p>Rating:</p>
+                            </div>
+                            <button class="btn btn-primary">Details</button>
+                        </div>
             </div>
         `;
         detailsContainer.appendChild(div);
