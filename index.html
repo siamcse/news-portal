@@ -7,6 +7,8 @@
     <title>News Portal</title>
     <!-- daysiui and tailwind cdn -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <!-- tailwind components -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -26,12 +28,21 @@
         <hr class="w-11/12 mx-auto">
     </header>
     <main class="px-24">
+        
         <!-- categories -->
         <section>
             <div>
                 <ul id="category-container" class="flex flex-col items-center md:flex-row md:justify-between">
                     <li class="hover:bg-sky-400 rounded"><a class="link link-hover p-2">Home</a></li>
                 </ul>
+            </div>
+        </section>
+        <!-- spinner  -->
+        <section>
+            <div class="flex justify-center items-center h-96">
+                <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
             </div>
         </section>
         <!-- news details  -->
