@@ -26,51 +26,71 @@ const displayDetails = (details) =>{
     const detailsContainer = document.getElementById('details-container');
     detailsContainer.innerHTML = '';
     details.forEach(detail =>{
-        console.log(detail);
-        const{title, details, image_url, thumbnail_url, author, total_view,rating} = detail;
+        // console.log(detail);
+        const{_id, title, details, image_url, thumbnail_url, author, total_view,rating} = detail;
         const {name, img, published_date} = author;
-        console.log(img);
         const div = document.createElement('div');
-        div.className = ('card md:card-side bg-base-100 shadow-xl mt-10');
+        div.className = ('card md:card-side bg-base-100 drop-shadow-xl mt-10');
         div.innerHTML = `
-            <figure><img class="w-60 h-full" src="${image_url}" alt="Album"></figure>
+            <figure><img class="w-60 h-full" src="${thumbnail_url}" alt="Album"></figure>
             <div class="card-body">
                 <h2 class="card-title">${title}</h2>
                 <p>${details.length>500 ? details.slice(0,500)+' ...':details}</p>
                 <div class="card-actions flex-col md:flex-row justify-between md:items-center">
-                            <div class="flex items-center gap-2">
-                                <img class="rounded-full w-10 h-10" src="${img}" alt="Image not found">
-                                <div>
-                                    <h6>${name ? name:'Author name not found'}</h6>
-                                    <p>${published_date ? published_date:'Published date not found'}</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="img/carbon_view.png" alt="">
-                                <h5 class="text-xl font-bold">${total_view ? total_view:0}</h5>
-                            </div>
-                            <div>
-                                <p>Rating: ${rating.number}</p>
-                            </div>
-                            <label onclick="displayModal(${title,thumbnail_url, name ,img})" for="my-modal-4" class="btn btn-primary modal-button">Details</label>
+                    <div class="flex items-center gap-2">
+                        <img class="rounded-full w-10 h-10" src="${img}" alt="Image not found">
+                        <div>
+                            <h6>${name ? name:'Author name not found'}</h6>
+                            <p>${published_date ? published_date:'Published date not found'}</p>
                         </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <img src="img/carbon_view.png" alt="">
+                        <h5 class="text-xl font-bold">${total_view ? total_view:0}</h5>
+                    </div>
+                    <div>
+                        <p>Rating: ${rating.number}</p>
+                    </div>
+                    <label onclick="loadModal('${_id}')" for="my-modal-4" class="btn btn-primary modal-button">Details<img src="img/arrow-right.png"/></label>
+                </div>
             </div>
         `;
         detailsContainer.appendChild(div);
     })
 }
 //load modal
-const displayModal = (title,thumbImg,name,authorImg) =>{
+const loadModal = (newsId) =>{
+    fetch(`https://openapi.programming-hero.com/api/news/${newsId}`) 
+    .then(res => res.json())
+    .then(data => displayModal(data.data[0])) 
+    
+}
+const displayModal = (newsId) =>{
+    console.log(newsId);
+    const {_id, title, details, image_url, thumbnail_url, author, total_view,rating} = newsId;
+    const {name, img, published_date} = author;
     const modalBody = document.getElementById('modal-body');
     modalBody.innerHTML = `
-        <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+        <figure><img src="${image_url}" alt="" /></figure>
         <div class="card-body">
-            <h2 class="card-title">Shoes!</h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div class="card-actions justify-end">
-                <button class="btn btn-primary">Buy Now</button>
-            </div>
+            <h2 class="card-title">${title}</h2>
+            <div class="card-actions flex-col md:flex-row justify-between md:items-center mt-6">
+                    <div class="flex items-center gap-2">
+                        <img class="rounded-full w-10 h-10" src="${img}" alt="Image not found">
+                        <div>
+                            <h6>${name ? name:'Author name not found'}</h6>
+                            <p>${published_date ? published_date:'Published date not found'}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <img src="img/carbon_view.png" alt="">
+                        <h5 class="text-xl font-bold">${total_view ? total_view:0}</h5>
+                    </div>
+                    <div>
+                        <p>Rating: ${rating.number}</p>
+                    </div>
+                </div>
         </div>
-    `
+    `;
 }
 loadCategory();
