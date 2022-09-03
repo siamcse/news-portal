@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News Portal</title>
+    <title>News</title>
     <link rel="stylesheet" href="style.css">
     <!-- daysiui and tailwind cdn -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
@@ -14,15 +14,15 @@
 </head>
 <body class="flex flex-col min-h-screen">
     <header class="divide-y-2">
-        <div class="flex flex-col md:flex-row items-center md:px-24">
+        <div class="flex flex-col md:flex-row items-center mb-3 md:px-24">
             <div class="flex-1">
-                <a class="btn btn-ghost normal-case text-xl">News Portal</a>
+                <a class="btn btn-ghost normal-case text-xl text-cyan-600"><span class="text-2xl mr-2 p-2 text-white bg-cyan-600 rounded">Online</span> News Portal</a>
             </div>
             <div class="flex-none">
                 <ul class="menu menu-horizontal p-0">
-                    <li><a href="/index.html">News</a></li>
-                    <li><a href="/blog.html">Blog</a></li>
-                    <li><a>Item 3</a></li>
+                    <li><a class="text-lg font-semibold text-cyan-600 underline" href="index.html">News</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a><img class="w-10 h-10 rounded-full" src="img/IMG_1911.jpg" alt=""></a></li>
                 </ul>
             </div>
         </div>
@@ -56,8 +56,8 @@
                     
                 </div>
                 <div class="flex items-center gap-4 mt-8">
-                    <h5 class="text-xl p-2 bg-blue-400	rounded-lg text-white">Todays Pick</h5>
-                    <h5 class="text-xl p-2 border-2 rounded-lg border-blue-400 text-blue-400">Trending</h5>
+                    <h5 class="text-xl p-2 bg-blue-600	rounded-lg text-white">Today's Pick</h5>
+                    <h5 class="text-xl p-2 border-2 rounded-lg border-blue-600 text-blue-600">Trending</h5>
                 </div>
             </div>
         </section>

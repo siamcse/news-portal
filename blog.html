@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
+    <link rel="stylesheet" href="style.css">
     <!-- daysiui and tailwind cdn -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
     <!-- tailwind components -->
@@ -13,39 +14,78 @@
 </head>
 <body class="flex flex-col min-h-screen">
     <header class="divide-y-2">
-        <div class="flex flex-col md:flex-row items-center bg-base-100 px-24">
+        <div class="flex flex-col md:flex-row items-center mb-3 md:px-24">
             <div class="flex-1">
-                <a class="btn btn-ghost normal-case text-xl">News Portal</a>
+                <a class="btn btn-ghost normal-case text-xl text-cyan-600"><span class="text-2xl mr-2 p-2 text-white bg-cyan-600 rounded">Online</span> News Portal</a>
             </div>
             <div class="flex-none">
                 <ul class="menu menu-horizontal p-0">
-                    <li><a href="/index.html">News</a></li>
-                    <li><a href="/blog.html">Blog</a></li>
-                    <li><a>Item 3</a></li>
+                    <li><a href="index.html">News</a></li>
+                    <li><a class="text-lg font-semibold text-cyan-600 underline" href="blog.html">Blog</a></li>
+                    <li><a><img class="w-10 h-10 rounded-full" src="img/IMG_1911.jpg" alt=""></a></li>
                 </ul>
             </div>
         </div>
         <hr class="w-11/12 mx-auto">
     </header>
     <main class="px-24">
-        <h1 class="text-5xl">Blog will be added here.</h1>
-        <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-            <div class="collapse-title text-xl font-medium">
-                Focus me to see content
+        <section>
+            <div class="font-serif md:w-9/12 mt-5 mx-auto">
+                <h1 class="text-2xl font-semibold">Difference Between var, let, and const in JavaScript</h1>
+                <p class="pl-6 leading-relaxed text-justify">
+                The differences between var, let, and const variable declaration in JavaScript include:
+                Variables declared with var and const are scoped to the immediate function body.
+                Variables declared with the var keyword are hoisted. Hoisting means that the variable can be accessed in their
+                enclosing
+                scope even before they are declared.
+                Variables declared with the let keyword are block-scoped, which means the variables will have scope to the
+                immediate
+                enclosing block.
+                </p>
             </div>
-            <div class="collapse-content">
-                <p>tabindex="0" attribute is necessary to make the div focusable</p>
+            <div class="font-serif md:w-9/12 mt-5 mx-auto">
+                <h1 class="text-2xl font-semibold">Difference Between Arrow Function and Regular Function</h1>
+                <p class="pl-6 leading-relaxed text-justify">
+                A programmer can get the same result as regular functions by writing a few lines of code using arrow functions. Curly
+                brackets are not required if only one expression is present.
+                arguments object inside the regular functions contains the list of arguments.
+                Inside of a regular JavaScript function, this value is dynamic. The dynamic context means that the value of this depends
+                on how the function is invoked.
+                The behavior of this inside of an arrow, function differs considerably from the regular function’s this behavior as an
+                arrow function does not have its own “this” keyword.
+                Regular functions are constructible and callable. They can be called using the new keyword.
+                But, the arrow functions are only callable and not constructible, i.e., arrow functions can never be used as constructor
+                functions.
+                </p>
             </div>
-        </div>
-        <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-            <div class="collapse-title text-xl font-medium">
-                Focus me to see content
+            <div class="font-serif md:w-9/12 mt-5 mx-auto">
+                <h1 class="text-2xl font-semibold">Difference between forEach, map, filter, and find in JavaScript.</h1>
+                <p class="pl-6 leading-relaxed text-justify">
+                The forEach() method calls a function for each element in an array. The forEach() method is not executed for empty
+                elements.
+                </p>
+                <p class="pl-6 leading-relaxed text-justify">
+                map() creates a new array from calling a function for every array element. map() calls a function once for each element
+                in an array. map() does not execute the function for empty elements.
+                </p>
+                <p class="pl-6 leading-relaxed text-justify">
+                The filter() method creates a new array filled with elements that pass a test provided by a function. The filter()
+                method does not execute the function for empty elements. The filter() method does not change the original array.
+                </p>
+                <p class="pl-6 leading-relaxed text-justify">
+                The find() method returns the value of the first element that passes a test. The find() method executes a function for
+                each array element.
+                </p>
             </div>
-            <div class="collapse-content">
-                <p>tabindex="0" attribute is necessary to make the div focusable</p>
+            <div class="font-serif md:w-9/12 mt-5 mx-auto">
+                <h1 class="text-2xl font-semibold">Why should you use template string?</h1>
+                <p class="pl-6 leading-relaxed text-justify">
+                Template strings are a powerful feature of modern JavaScript released in ES6. It lets us insert/interpolate variables
+                and expressions into strings without needing to concatenate like in older versions of JavaScript. It allows us to create
+                strings that are complex and contain dynamic elements.
+                </p>
             </div>
-        </div>
-
+        </section>
     </main>
     <footer class="footer items-center p-4 bg-neutral text-neutral-content mt-auto">
         <div class="items-center grid-flow-col">
