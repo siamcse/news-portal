@@ -1,9 +1,14 @@
 const loadCategory = async() =>{
     isLoading(true);
-    const url = 'https://openapi.programming-hero.com/api/news/categories';
-    const res = await fetch(url)
-    const data = await res.json()
-    displayCategory(data.data.news_category);
+    try {
+        const url = 'https://openapi.programming-hero.com/api/news/categories';
+        const res = await fetch(url)
+        const data = await res.json()
+        displayCategory(data.data.news_category);
+    }
+    catch(e){
+        console.log(e);
+    }
 }
 const displayCategory = (categories) =>{
     const categoryContainer = document.getElementById('category-container');
@@ -12,7 +17,7 @@ const displayCategory = (categories) =>{
         const li = document.createElement('li');
         li.classList.add('hover:bg-sky-400', 'rounded');
         li.innerHTML = `
-            <a onclick="loadDetails(${category.category_id},'${category.category_name}')" class="link link-hover p-2">${category.category_name}</a>
+            <a onclick="loadDetails(${category.category_id},'${category.category_name}')" class="link link-hover p-3">${category.category_name}</a>
         `;
         categoryContainer.appendChild(li);
         loadDetails(05,'Entertainment');
@@ -22,9 +27,14 @@ const displayCategory = (categories) =>{
 const loadDetails = (detailsId,categoryName) =>{
     isLoading(true);
     document.getElementById('category-name').innerText = categoryName;
-    fetch(`https://openapi.programming-hero.com/api/news/category/0${detailsId}`)
-    .then(res => res.json())
-    .then(data => displayDetails(data.data))
+    try{
+        fetch(`https://openapi.programming-hero.com/api/news/category/0${detailsId}`)
+        .then(res => res.json())
+        .then(data => displayDetails(data.data))
+    }
+    catch(e){
+        console.log(e);
+    }
 }
 //display details in card
 const displayDetails = (details) =>{
@@ -72,9 +82,14 @@ const displayDetails = (details) =>{
 }
 //load modal
 const loadModal = (newsId) =>{
-    fetch(`https://openapi.programming-hero.com/api/news/${newsId}`) 
-    .then(res => res.json())
-    .then(data => displayModal(data.data[0])) 
+    try{
+        fetch(`https://openapi.programming-hero.com/api/news/${newsId}`) 
+        .then(res => res.json())
+        .then(data => displayModal(data.data[0])) 
+    }
+    catch(e){
+        console.log(e);
+    }
     
 }
 const displayModal = (newsId) =>{
