@@ -12,14 +12,16 @@ const displayCategory = (categories) =>{
         const li = document.createElement('li');
         li.classList.add('hover:bg-sky-400', 'rounded');
         li.innerHTML = `
-            <a onclick="loadDetails(${category.category_id})" class="link link-hover p-2">${category.category_name}</a>
+            <a onclick="loadDetails(${category.category_id},'${category.category_name}')" class="link link-hover p-2">${category.category_name}</a>
         `;
         categoryContainer.appendChild(li);
+        loadDetails(05,'Entertainment');
         isLoading(false);
     })
 }
-const loadDetails = (detailsId) =>{
+const loadDetails = (detailsId,categoryName) =>{
     isLoading(true);
+    document.getElementById('category-name').innerText = categoryName;
     fetch(`https://openapi.programming-hero.com/api/news/category/0${detailsId}`)
     .then(res => res.json())
     .then(data => displayDetails(data.data))
@@ -28,6 +30,7 @@ const loadDetails = (detailsId) =>{
 const displayDetails = (details) =>{
     const detailsContainer = document.getElementById('details-container');
     isLoading(false);
+    document.getElementById('news-number').innerText = details.length;
     detailsContainer.innerHTML = '';
     details.forEach(detail =>{
         // console.log(detail);
