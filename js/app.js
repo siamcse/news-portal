@@ -17,7 +17,7 @@ const displayCategory = (categories) =>{
         const li = document.createElement('li');
         li.classList.add('hover:bg-sky-400', 'rounded');
         li.innerHTML = `
-            <a onclick="loadDetails(${category.category_id},'${category.category_name}')" class="link link-hover p-3">${category.category_name}</a>
+            <a id="anchor" onclick="loadDetails(${category.category_id},'${category.category_name}')" class="link link-hover p-3">${category.category_name}</a>
         `;
         categoryContainer.appendChild(li);
         loadDetails(05,'Entertainment');
@@ -25,6 +25,7 @@ const displayCategory = (categories) =>{
     })
 }
 const loadDetails = (detailsId,categoryName) =>{
+    
     isLoading(true);
     document.getElementById('category-name').innerText = categoryName;
     try{
@@ -56,18 +57,18 @@ const displayDetails = (details) =>{
             <figure><img class="w-60 h-full" src="${thumbnail_url}" alt="Album"></figure>
             <div class="card-body">
                 <h2 class="card-title">${title}</h2>
-                <p>${details.length>500 ? details.slice(0,500)+' ...':details}</p>
+                <p>${details.length>500 ? details.slice(0,500)+'...':details}</p>
                 <div class="card-actions flex-col md:flex-row justify-between md:items-center">
                     <div class="flex items-center gap-2">
                         <img class="rounded-full w-10 h-10" src="${img}" alt="Image not found">
                         <div>
-                            <h6>${name ? name:'Author name not found'}</h6>
-                            <p>${published_date ? published_date:'Published date not found'}</p>
+                            <h6>${name ? name:'DATA NOT AVAILABLE'}</h6>
+                            <p>${published_date ? published_date:'DATA NOT AVAILABLE'}</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-2">
                         <img src="img/carbon_view.png" alt="">
-                        <h5 class="text-xl font-bold">${total_view ? total_view:0}</h5>
+                        <h5 class="text-xl font-bold">${total_view ? total_view:'DATA NOT AVAILABLE'}</h5>
                     </div>
                     <div>
                         <p>Rating: ${rating.number}</p>
@@ -102,21 +103,22 @@ const displayModal = (newsId) =>{
         <div class="card-body">
             <h2 class="card-title">${title}</h2>
             <div class="card-actions flex-col md:flex-row justify-between md:items-center mt-6">
-                    <div class="flex items-center gap-2">
-                        <img class="rounded-full w-10 h-10" src="${img}" alt="Image not found">
-                        <div>
-                            <h6>${name ? name:'Author name not found'}</h6>
-                            <p>${published_date ? published_date:'Published date not found'}</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <img src="img/carbon_view.png" alt="">
-                        <h5 class="text-xl font-bold">${total_view ? total_view:0}</h5>
-                    </div>
+                <div class="flex items-center gap-2">
+                    <img class="rounded-full w-10 h-10" src="${img}" alt="Image not found">
                     <div>
-                        <p>Rating: ${rating.number}</p>
+                        <h6>${name ? name:'Author name not found'}</h6>
+                        <p>${published_date ? published_date:'Published date not found'}</p>
                     </div>
                 </div>
+                <div class="flex items-center gap-2">
+                    <img src="img/carbon_view.png" alt="">
+                    <h5 class="text-xl font-bold">${total_view ? total_view:0}</h5>
+                </div>
+                <div>
+                    <p>Rating: ${rating.number}</p>
+                </div>
+            </div>
+            <p>${details.length>500 ? details.slice(0,500)+'...':details}</p>
         </div>
     `;
 }
