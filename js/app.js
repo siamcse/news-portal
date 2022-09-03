@@ -29,6 +29,10 @@ const loadDetails = (detailsId,categoryName) =>{
 //display details in card
 const displayDetails = (details) =>{
     const detailsContainer = document.getElementById('details-container');
+    //array of object sorted
+    details.sort((a,b) =>{
+        return b.total_view - a.total_view;
+    })
     isLoading(false);
     document.getElementById('news-number').innerText = details.length;
     detailsContainer.innerHTML = '';
